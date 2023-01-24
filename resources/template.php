@@ -21,11 +21,58 @@
         <header class="py-5">
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                    <div class="m-4 m-lg-5">
-                        <h1 class="display-5 fw-bold">A warm welcome!</h1>
-                        <p class="fs-4">Bootstrap utility classes are used to create this jumbotron since the old component has been removed from the framework. Why create custom CSS when you can use utilities?</p> 
-                        <a class="btn btn-primary btn-lg" href="#!">Call to action</a>
+                                                                            <!-- Form Start-->
+                  <form class="row g-3" action="/redirects/task.php">
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">Title</label>
+                      <input type="email" class="form-control" id="inputEmail4">
                     </div>
+                  
+                                      
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label">Reward</label>
+                      <input type="password" class="form-control" id="inputPassword4">
+                    </div>
+                  
+                                      
+                    <div class="col-12">
+                      <label for="inputAddress" class="form-label">Description</label><br>
+                      <textarea name="mytextarea" rows="2" cols="100"></textarea>
+                    </div>
+                                
+                    <div class="col-md-6">
+                      <label for="inputState" class="form-label">Categories</label>
+                      <select id="inputState" class="form-select">
+                        <option selected>Choose...</option>
+                          <option>Personal</option>
+                          <option>Chores</option>
+                          <option>Math</option>
+                          <option>Science</option>
+                          <option>English</option>
+                          <option>History</option>
+                        </select>
+                    </div>
+                  
+                                      
+                    <div class="col-md-6">
+                      <label for="inputState" class="form-label">Time needed</label>
+                      <select id="inputState" class="form-select">
+                        <option selected>Choose...</option>
+                        <option>5 Minutes</option>
+                        <option>10 Minutes</option>
+                        <option>15 Minutes</option>
+                        <option>30 Minutes</option>
+                        <option>1 Hour</option>
+                        <option>2 Hours</option>
+                        <option>5 Hours</option>
+                      </select>
+                    </div>
+                               
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                                                                    <!------ Form End ------->
                 </div>
             </div>
         </header>
