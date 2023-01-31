@@ -1,6 +1,7 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php';
 
 
-  $_SESSION["form"]["title"] = $_POST['title'];
+echo '<pre>'; var_dump($_POST); echo '</pre>'
 
-  echo $_POST['title'];
+
+?>
