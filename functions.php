@@ -1,8 +1,17 @@
 <?php session_start();
 
+  $taskDataFile = $_SERVER['DOCUMENT_ROOT'] . '/data/tasks.json';
+  $userDataFile = $_SERVER['DOCUMENT_ROOT'] . '/data/users.json';
 
+  // JSON get data
+  $jsonTasks = file_get_contents($taskDataFile);
+  $jsonUsers = file_get_contents($userDataFile);
+  // JSON Decoding
+  $taskData = json_decode($jsonTasks, TRUE);
+  $userData = json_decode($jsonUsers, TRUE);
 
-
+  
+  // echo '<pre>'; var_dump($jsonUsers); echo '</pre>';
 
 
 
@@ -36,4 +45,3 @@
 
 
 ?>
-<!-- Whatever -->

@@ -21,17 +21,26 @@
         <header class="py-5">
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                     <form class="row g-3" action="/redirects/task.php" method="POST">
+                  <form class="row g-3" action="/redirects/task.php" method="POST">
+    
                     <h1> Task Entry Form</h1>
                     <div class="col-md-6">
                       <label for="title" class="form-label">Title</label>
-                      <input type="textbox" class="form-control" name = "title" id="inputEmail4">
+                      <input type="textbox" class="form-control" name = "title" id="title">
                     </div>
 
 
                     <div class="col-md-6">
                       <label for="user" class="form-label">User</label>
-                      <input type="textbox" class="form-control" id="inputEmail4">
+                      <select selected value = "0" class="form-select" name="user" id="user">
+
+                        <?php 
+                          foreach($userData as $user){
+                            echo '<option selected value=' . $user["uid"] . '">' . $user["fName"] . ' ' . $user["fName"] . '</option>';
+                          }
+                        ?>
+
+                      </select>
                     </div>
                   
                                       
@@ -43,34 +52,19 @@
 
                     <div class="col-md-6">
                       <label for="deadline" class="form-label">Date of Deadline</label>
-                      <input type="textbox" class="form-control" name="deadline" id="deadline">
+                      <input type="date" class="form-control" name="deadline" id="deadline">
                     </div>
 
-
-                    <div class="col-md-6">
-                      <label for="progress" class="form-label">Progress</label>
-                      <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>Ongoing</option>
-                        <option>Completed</option>
-                      </select>
-                    </div>
-                    
-
-                    <div class="col-md-6">
-                      <label for="completion" class="form-label">Date of Completion</label>
-                      <input type="textbox" class="form-control" name="completion" id="completion">
-                    </div>
-                  
                                       
                     <div class="col-12">
                       <label for="description" class="form-label">Description</label><br>
-                      <textarea name="mytextarea" class="form-control rows="2" cols="100"></textarea>
+                      <textarea name="description" id="description" class="form-control rows="2" cols="100"></textarea>
                     </div>
+   
                                 
                     <div class="col-md-6">
                       <label for="categories" class="form-label">Categories</label>
-                      <select id="categories" class="form-select">
+                      <select id="categories" name="categories" class="form-select">
                         <option selected>Choose...</option>
                         <option>Personal</option>
                         <option>Chores</option>
@@ -83,8 +77,8 @@
                   
                                       
                     <div class="col-md-6">
-                      <label for="timeNeeded" class="form-label">Time needed</label>
-                      <select id="timeNeeded" class="form-select">
+                      <label for="inputState" class="form-label">Time needed</label>
+                      <select id="timeNeeded" name="timeNeeded" class="form-select">
                         <option selected>Choose...</option>
                         <option>5 Minutes</option>
                         <option>10 Minutes</option>
@@ -95,10 +89,12 @@
                         <option>5 Hours</option>
                       </select>
                     </div>
-                               
+
+    
                     <div class="col-12">
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
+    
                   </form>
                 </div>
             </div>
