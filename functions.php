@@ -24,7 +24,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>"
+        </nav>
         ';
 
   $footer = '
@@ -36,3 +36,4 @@
 
 
 ?>
+<!-- Whatever -->
