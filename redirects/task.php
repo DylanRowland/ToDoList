@@ -37,9 +37,11 @@
   // put in new task into json file
   file_put_contents($_SERVER['DOCUMENT_ROOT'].'/data/tasks.json', $taskDataJSON);
     
-  header('Location: /index.php');
+  // header('Location: /index.php');
     
-  // echo '<pre>'; var_dump($_POST); echo '</pre>'
+echo '<pre>'; 
+var_dump($_POST); 
+echo '</pre>'
 
 
 
