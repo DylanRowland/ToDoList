@@ -32,11 +32,12 @@
 
                     <div class="col-md-6">
                       <label for="user" class="form-label">User</label>
-                      <select selected value = "0" class="form-select" name="user" id="user">
+                      <select class="form-select" name="user" id="user">
+                        <option value= "0" selected> Choose a user </option>
 
                         <?php 
                           foreach($userData as $user){
-                            echo '<option selected value=' . $user["uid"] . '">' . $user["fName"] . ' ' . $user["fName"] . '</option>';
+                            echo '<option value="'.  $user['uid'].  '">' . $user['fName'] . ' ' . $user['lName'] . '</option>';
                           }
                         ?>
 
@@ -63,8 +64,8 @@
    
                                 
                     <div class="col-md-6">
-                      <label for="categories" class="form-label">Categories</label>
-                      <select id="categories" name="categories" class="form-select">
+                      <label for="category" class="form-label">Categories</label>
+                      <select id="category" name="category" class="form-select">
                         <option selected>Choose...</option>
                         <option>Personal</option>
                         <option>Chores</option>
@@ -92,7 +93,7 @@
 
     
                     <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary" id="BTN_create" name="BTN_create">Submit</button>
                     </div>
     
                   </form>
