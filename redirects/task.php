@@ -1,6 +1,6 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php';
 
-  if(isset($_POST['BTN_create']) && $_POST['user'] > 0) {
+  if(isset($_POST['BTN_create']) && $_POST['user'] != "0") {
 
     $date = date_create($_POST['dateDeadline']);
     $deadlineReformatted = date_format($date, "Y/m/d");

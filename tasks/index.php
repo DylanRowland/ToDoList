@@ -1,4 +1,19 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; 
+
+  $result = array();
+  foreach ($taskData as $tasks){
+    foreach ($userData as $user){
+      if ($tasks["userUID"] == $user["uid"]){
+        unset($user["uid"]);
+        $combinedData[] = array_merge($tasks, $user);
+      }
+    }
+  }
+
+  // echo '<pre>'; var_dump($combinedData); echo '</pre>';
+  
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,7 +64,7 @@
                           </thead>
                           <tbody>
                             <?php 
-                              foreach($taskData as $key => $task){
+                              foreach($combinedData as $key => $task){
                                 echo '
 
 
