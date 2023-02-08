@@ -59,7 +59,7 @@
                               <th scope="col">User</th>
                               <th scope="col">Title</th>
                               <th scope="col">Category</th>
-                              <th scope="col">Value</th>
+                              <th scope="col">Reward</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -69,11 +69,11 @@
 
 
                                   <tr>
-                                    <th scope="row">1</th>
+                                    <td scope="row">'.$task['dateDeadline'].'</td>
                                     <td>'.$task['fName'].' '.$task['lName'].'</td>
-                                    <td>Otto</td>
+                                    <td>'.$task['title'].'</td>
                                     <td>'. $task['category'] .'</td>
-                                    <td>@mdo</td>
+                                    <td>'.$task['reward'].'</td>
                                   </tr>
 
 
