@@ -1,6 +1,6 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php';
 
-  if(isset($_POST['BTN_create']) && $_POST['user'] > 0) {
+  if(isset($_POST['BTN_create']) && $_POST['user'] != "0") {
 
     $date = date_create($_POST['dateDeadline']);
     $deadlineReformatted = date_format($date, "Y/m/d");
@@ -33,15 +33,15 @@
 
   array_push($taskData, $newFormData);
   // turn php array back into JSON data
-  $taskDataJSON = json_encode($taskData);
+  $taskDataJSON = json_encode($taskData, JSON_PRETTY_PRINT);
   // put in new task into json file
   file_put_contents($_SERVER['DOCUMENT_ROOT'].'/data/tasks.json', $taskDataJSON);
     
-  // header('Location: /index.php');
+  header('Location: /index.php');
     
-echo '<pre>'; 
-var_dump($_POST); 
-echo '</pre>'
+  // echo '<pre>'; 
+  // var_dump($_POST); 
+  // echo '</pre>'
 
 
 

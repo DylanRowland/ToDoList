@@ -46,7 +46,7 @@
                   
                                       
                     <div class="col-md-6">
-                      <label for="inputState" class="form-label">Time needed</label>
+                      <label for="timeNeeded" class="form-label">Time needed</label>
                       <select id="timeNeeded" name="timeNeeded" class="form-select">
                         <option selected>Choose...</option>
                         <option>5 Minutes</option>
