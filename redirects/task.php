@@ -14,28 +14,30 @@
         }
     }
     
+  
+
+    $newFormData = array( 
+                    "uid"=> $newUID, 
+                    "userUID"=> $_POST['user'], 
+                    "title"=> $_POST['title'], 
+                    "dateCreate"=>date("Y/m/d"),
+                    "dateDeadline"=> $deadlineReformatted, 
+                    "dateComplete"=> NULL, 
+                    "decription"=> $_POST['description'], 
+                    "status"=> "created", 
+                    "reward"=> $_POST['reward'], 
+                    "timeNeeded"=> $_POST['timeNeeded'], 
+                    "category"=> $_POST['category']
+                      );
+  
+  
+    array_push($taskData, $newFormData);
+    // turn php array back into JSON data
+    $taskDataJSON = json_encode($taskData, JSON_PRETTY_PRINT);
+    // put in new task into json file
+    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/data/tasks.json', $taskDataJSON);
+  
   }
-
-  $newFormData = array( 
-                  "uid"=> $newUID, 
-                  "userUID"=> $_POST['user'], 
-                  "title"=> $_POST['title'], 
-                  "dateCreate"=>date("Y/m/d"),
-                  "dateDeadline"=> $deadlineReformatted, 
-                  "dateComplete"=> NULL, 
-                  "decription"=> $_POST['description'], 
-                  "status"=> "created", 
-                  "reward"=> $_POST['reward'], 
-                  "timeNeeded"=> $_POST['timeNeeded'], 
-                  "category"=> $_POST['category']
-                    );
-
-
-  array_push($taskData, $newFormData);
-  // turn php array back into JSON data
-  $taskDataJSON = json_encode($taskData, JSON_PRETTY_PRINT);
-  // put in new task into json file
-  file_put_contents($_SERVER['DOCUMENT_ROOT'].'/data/tasks.json', $taskDataJSON);
     
   header('Location: /index.php');
     
