@@ -70,7 +70,7 @@
 
                                   <tr>
                                     <th scope="row">1</th>
-                                    <td>'. $task['userUID'] .'</td>
+                                    <td>'.$task['fName'].' '.$task['lName'].'</td>
                                     <td>Otto</td>
                                     <td>'. $task['category'] .'</td>
                                     <td>@mdo</td>
