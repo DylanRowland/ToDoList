@@ -1,18 +1,15 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; 
 
-  $result = array();
-  foreach ($taskData as $tasks){
-    foreach ($userData as $user){
-      if ($tasks["userUID"] == $user["uid"]){
-        unset($user["uid"]);
-        $combinedData[] = array_merge($tasks, $user);
-      }
-    }
+  $categories = array();
+  foreach ($combinedData as $cat) {
+      $categories[] = $cat['category'];
   }
+  $uniqueCats = array_unique($categories);
 
-  // echo '<pre>'; var_dump($combinedData); echo '</pre>';
+  // echo '<pre>'; 
+  // var_dump($uniqueCats); 
+  // echo '</pre>';
   
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +36,18 @@
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">Filtered Tasks</h1>
                         <p class="fs-4">Form goes here</p> 
-                        <a class="btn btn-primary btn-lg" href="#!">Filter</a>
+                        <form action="/redirects/search.php" method="post">
+                          <select class="form-select" name="fliterCategory">
+                            <option selected>Choose Category</option>
+                            <?php
+                              foreach($uniqueCats as $category) {
+                                echo '<option value="'.$category.'">'.$category.'</option>';
+                              }
+                            ?>
+                          </select>
+                          <br>
+                          <input class="btn btn-primary btn-lg" type="submit" value="Search" name="btnSearch" id="btnSearch">
+                        </form>
                     </div>
                 </div>
             </div>
