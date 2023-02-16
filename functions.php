@@ -6,12 +6,29 @@
   // JSON get data
   $jsonTasks = file_get_contents($taskDataFile);
   $jsonUsers = file_get_contents($userDataFile);
+
   // JSON Decoding
   $taskData = json_decode($jsonTasks, TRUE);
   $userData = json_decode($jsonUsers, TRUE);
 
+
+
   
-  // echo '<pre>'; var_dump($jsonUsers); echo '</pre>';
+  $combinedData = array();
+  foreach ($taskData as $tasks){
+    foreach ($userData as $user){
+      if ($tasks["userUID"] == $user["uid"]){
+        unset($user["uid"]);
+        $combinedData[] = array_merge($tasks, $user);
+      }
+    }
+  }
+
+
+
+
+
+  // echo '<pre>'; var_dump($combinedData); echo '</pre>';
 
 
 
