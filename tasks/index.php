@@ -1,14 +1,21 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; 
 
+  if ($_GET['search'] == 'yes'){
+    $usableTaskData = $_SESSION['searchResults'];
+  } else {
+    $usableTaskData = $combinedData;
+  }
+
+  // echo '<pre>'; 
+  // var_dump($_SESSION['searchResults']); 
+  // echo '</pre>';
+
   $categories = array();
   foreach ($combinedData as $cat) {
       $categories[] = $cat['category'];
   }
   $uniqueCats = array_unique($categories);
 
-  // echo '<pre>'; 
-  // var_dump($uniqueCats); 
-  // echo '</pre>';
   
 ?>
 <!DOCTYPE html>
@@ -72,7 +79,7 @@
                           </thead>
                           <tbody>
                             <?php 
-                              foreach($combinedData as $key => $task){
+                              foreach($usableTaskData as $key => $task){
                                 echo '
 
 
