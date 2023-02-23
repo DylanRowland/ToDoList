@@ -6,10 +6,9 @@
     $usableTaskData = $combinedData;
   }
 
-  // echo '<pre>'; 
-  // var_dump($_SESSION['searchResults']); 
-  // echo '</pre>';
+  
 
+  //looking for category
   $categories = array();
   foreach ($combinedData as $cat) {
       $categories[] = $cat['category'];
@@ -17,6 +16,11 @@
   $uniqueCats = array_unique($categories);
 
   
+
+  // echo '<pre>'; 
+  // var_dump($uniqueCats); 
+  // echo '</pre>';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,10 +49,19 @@
                         <p class="fs-4">Form goes here</p> 
                         <form action="/redirects/search.php" method="post">
                           <select class="form-select" name="fliterCategory">
-                            <option selected>Choose Category</option>
+                            <option value = "none" selected>Choose Category</option>
                             <?php
                               foreach($uniqueCats as $category) {
                                 echo '<option value="'.$category.'">'.$category.'</option>';
+                              }
+                            ?>
+                          </select>
+                          <br>
+                          <select class="form-select" name="fliterUser">
+                            <option value = "none" selected>Select a User</option>
+                            <?php
+                              foreach($userData as $user) {
+                                echo '<option value="'.$user["uid"].'">'.$user["fName"]." ".$user["lName"].'</option>';
                               }
                             ?>
                           </select>
