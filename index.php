@@ -1,4 +1,27 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; 
+
+$taskCount = 0;
+$catCountChores = 0;
+$timeCount5 = 0;
+foreach($taskData as $task){
+
+if($task['category'] == "Chores"){
+  $catCountChores++;
+}
+if($task['timeNeeded'] == "5 Minutes"){
+  $timeCount5++;
+}
+
+  
+  $taskCount++;
+}
+$userCount = 0;
+foreach($userData as $user){
+  $userCount++;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -105,21 +128,28 @@
             <div class="container px-lg-5">
                 <!-- Page Features-->
                 <div class="row gx-lg-5">
+
+                  
                     <div class="col-lg-6 col-xxl-4 mb-5">
+                      
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i></div>
-                                <h2 class="fs-4 fw-bold">Fresh new layout</h2>
-                                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+                                <h2 class="fs-4 fw-bold">Task Count </h2>
+                                <p class="mb-0"> Total Tasks: <?php echo $taskCount; ?></p>
                             </div>
                         </div>
+
+
+                      
                     </div>
+                  
                     <div class="col-lg-6 col-xxl-4 mb-5">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-cloud-download"></i></div>
-                                <h2 class="fs-4 fw-bold">Free to download</h2>
-                                <p class="mb-0">As always, Start Bootstrap has a powerful collectin of free templates.</p>
+                                <h2 class="fs-4 fw-bold"> User Count</h2>
+                                <p class="mb-0">Total Users: <?php echo $userCount; ?></p>
                             </div>
                         </div>
                     </div>
@@ -127,8 +157,8 @@
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-card-heading"></i></div>
-                                <h2 class="fs-4 fw-bold">Jumbotron hero header</h2>
-                                <p class="mb-0">The heroic part of this template is the jumbotron hero header!</p>
+                                <h2 class="fs-4 fw-bold">Chore Count</h2>
+                                <p class="mb-0">Total Chores: <?php echo $catCountChores; ?></p>
                             </div>
                         </div>
                     </div>
@@ -136,8 +166,8 @@
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-bootstrap"></i></div>
-                                <h2 class="fs-4 fw-bold">Feature boxes</h2>
-                                <p class="mb-0">We've created some custom feature boxes using Bootstrap icons!</p>
+                                <h2 class="fs-4 fw-bold">Time Count</h2>
+                                <p class="mb-0">Total Quick Tasks: <?php echo $timeCount5; ?></p>
                             </div>
                         </div>
                     </div>
