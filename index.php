@@ -3,6 +3,7 @@
 $taskCount = 0;
 $catCountChores = 0;
 $timeCount5 = 0;
+$taskCountPastDue = 0;
 foreach($taskData as $task){
 
 if($task['category'] == "Chores"){
@@ -12,7 +13,12 @@ if($task['timeNeeded'] == "5 Minutes"){
   $timeCount5++;
 }
 
+ if(strtotime($task['dateDeadline'])      <    strtotime(date("h:i:sa"))) {
+
+   $taskCountPastDue++;
+ }
   
+  $dateTest = $task['dateDeadline'];
   $taskCount++;
 }
 $userCount = 0;
@@ -175,8 +181,10 @@ foreach($userData as $user){
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-code"></i></div>
-                                <h2 class="fs-4 fw-bold">Simple clean code</h2>
-                                <p class="mb-0">We keep our dependencies up to date and squash bugs as they come!</p>
+                                <h2 class="fs-4 fw-bold">Deadline:</h2>
+                                <p class="mb-0"> Past Due:  <?php echo $taskCountPastDue;?> </p>
+                               
+                                
                             </div>
                         </div>
                     </div>
