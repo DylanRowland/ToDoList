@@ -2,7 +2,7 @@
 
   if(isset($_POST['BTN_create']) && $_POST['user'] != "0") {
 
-    $date = date_create($_POST['dateDeadline']);
+    $date = date_create($_POST['deadline']);
     $deadlineReformatted = date_format($date, "Y/m/d");
 
     //Create a new LARGEST UID based on existing UIDs in an array. 
