@@ -1,31 +1,66 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; 
 
-$taskCount = 0;
-$catCountChores = 0;
-$timeCount5 = 0;
-$taskCountPastDue = 0;
-foreach($taskData as $task){
+  //need to finish the unique task
 
-if($task['category'] == "Chores"){
-  $catCountChores++;
-}
-if($task['timeNeeded'] == "5 Minutes"){
-  $timeCount5++;
-}
+  $taskCount = 0;
+  $catCountChores = 0;
+  $timeCount5 = 0;
+  $timeCount300 = 0;
+  $taskCountPastDue = 0;
+  $sumOfRewards = 0;
+  $sumOfChoresReward = 0;
+  $sumOfTime = 0;
+  $sumOfPastDueReward = 0;
+  $countNext7days = 0;
+  $averageRewardAmount = 0;
+  $NewTasks7days = 0;
 
- if(strtotime($task['dateDeadline'])      <    strtotime(date("h:i:sa"))) {
+  foreach($taskData as $task){ // START: Foreach task
 
-   $taskCountPastDue++;
- }
+     
+
+                              
+    $sumOfTime = $sumOfTime + $task['timeNeeded'];
+    $sumOfRewards = $sumOfRewards + $task['reward'];
+    $taskCount++;
+
+    $averageRewardAmount = $sumOfRewards / $taskCount;
+    $averageRewardRounded = ceil($averageRewardAmount);   
+               
+    if($task['category'] == "Chores"){ 
+      $catCountChores++;
+      $sumOfChoresReward = $sumOfChoresReward + $task['reward'];
+    }
+    if($task['timeNeeded'] == "5"){
+      $timeCount5++;
+    }
+    if($task['timeNeeded'] == "300"){
+      $timeCount300++;
+    }
+    if(strtotime($task['dateDeadline'])      <    strtotime(date("h:i:sa"))) {
+
+      
+      $sumOfPastDueReward = $sumOfPastDueReward + $task['reward'];
+      
+      $taskCountPastDue++;
+     }
+    if(strtotime($task['dateDeadline'])  >  strtotime(date("h:i:sa")) && strtotime($task['dateDeadline']) < strtotime(date("h:i:sa"))+604800  ) {
+      $countNext7days++;
+     }
+    if(strtotime($task['dateCreate']) > strtotime(date("h:i:sa"))-604800  ) {
+      $NewTasks7days++;
+     }
+
+ 
+     
+      
+  }// END: Foreach task
+
+  $userCount = 0;
+  foreach($userData as $user){ // START: Foreach user
+    $userCount++;
+  }    // END: Foreach User
   
-  $dateTest = $task['dateDeadline'];
-  $taskCount++;
-}
-$userCount = 0;
-foreach($userData as $user){
-  $userCount++;
-}
-
 
 ?>
 <!DOCTYPE html>
@@ -107,16 +142,16 @@ foreach($userData as $user){
                   
                                       
                     <div class="col-md-6">
-                      <label for="inputState" class="form-label">Time needed</label>
+                      <label for="inputState" class="form-label">Minutes needed</label>
                       <select id="timeNeeded" name="timeNeeded" class="form-select">
                         <option selected>Choose...</option>
-                        <option>5 Minutes</option>
-                        <option>10 Minutes</option>
-                        <option>15 Minutes</option>
-                        <option>30 Minutes</option>
-                        <option>1 Hour</option>
-                        <option>2 Hours</option>
-                        <option>5 Hours</option>
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>30</option>
+                        <option>60</option>
+                        <option>120</option>
+                        <option>300</option>
                       </select>
                     </div>
 
@@ -174,6 +209,7 @@ foreach($userData as $user){
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-bootstrap"></i></div>
                                 <h2 class="fs-4 fw-bold">Time Count</h2>
                                 <p class="mb-0">Total Quick Tasks: <?php echo $timeCount5; ?></p>
+                                <p class="mb-0">Total long Tasks: <?php echo $timeCount300; ?></p>
                             </div>
                         </div>
                     </div>
@@ -183,8 +219,8 @@ foreach($userData as $user){
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-code"></i></div>
                                 <h2 class="fs-4 fw-bold">Deadline:</h2>
                                 <p class="mb-0"> Past Due:  <?php echo $taskCountPastDue;?> </p>
-                               
-                                
+                                <p class="mb-0"> Within 7 days:  <?php echo $countNext7days;?> </p>
+                                <p class="mb-0"> New Within 7 days:  <?php echo $NewTasks7days;?> </p>
                             </div>
                         </div>
                     </div>
@@ -192,8 +228,12 @@ foreach($userData as $user){
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-patch-check"></i></div>
-                                <h2 class="fs-4 fw-bold">A name you trust</h2>
-                                <p class="mb-0">Start Bootstrap has been the leader in free Bootstrap templates since 2013!</p>
+                                <h2 class="fs-4 fw-bold">Time and Reward Total: </h2>
+                                <p class="mb-0">Total Rewards: <?php echo $sumOfRewards; ?></p>
+                                <p class="mb-0">Total Chore Reward: <?php echo $sumOfChoresReward; ?></p>
+                                <p class="mb-0">Total lost Reward: <?php echo $sumOfPastDueReward; ?></p>
+                                <p class="mb-0">Total Minutes: <?php echo $sumOfTime; ?></p>
+                                <p class="mb-0">Average Reward: <?php echo $averageRewardRounded; ?></p>
                             </div>
                         </div>
                     </div>
