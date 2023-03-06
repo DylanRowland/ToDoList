@@ -1,29 +1,36 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/functions.php'; 
+
+  $sortedTaskData = $taskData;
+
 foreach ($taskData as $task){
   // echo $task['reward']. "<br>";
 }
 
-function sortByReward($a,$b){
-  if($a['reward'] == $b['reward']){
-    return 0;
-  }
-  return ($a['reward'] < $b['reward'])? 1:-1;
-}
+// function sortByReward($a,$b){
+//   if($a['reward'] == $b['reward']){
+//     return 0;
+//   }
+//   return ($a['reward'] < $b['reward'])? 1:-1;
+// }
 
-usort ($taskData, 'sortByReward');
+usort ($sortedTaskData, 'sortByReward');
 
 
 
 
 $i=0;
+$top5Reward = [];
+
 while ($i<=4){
-  echo $taskData[$i]['reward']. "<br>";
+  echo $sortedTaskData[$i]['reward']. "<br>";
+  $top5Reward[$i] = $sortedTaskData[$i];
+  
   $i++;
 }
 
-//  echo '<pre>'; 
-// var_dump($taskData); 
-// echo '</pre>';
+ echo '<pre>'; 
+var_dump($top5Reward); 
+echo '</pre>';
 
 
 ?>
