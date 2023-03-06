@@ -11,6 +11,14 @@
   $taskData = json_decode($jsonTasks, TRUE);
   $userData = json_decode($jsonUsers, TRUE);
 
+  //sorting data by the rewards
+  function sortByReward($a,$b){
+    if($a['reward'] == $b['reward']){
+      return 0;
+    }
+    return ($a['reward'] < $b['reward'])? 1:-1;
+  }
+
 
 
   
