@@ -88,6 +88,7 @@
                               <th scope="col">Title</th>
                               <th scope="col">Category</th>
                               <th scope="col">Reward</th>
+                              <th scope="col">Status</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -102,6 +103,7 @@
                                     <td>'.$task['title'].'</td>
                                     <td>'. $task['category'] .'</td>
                                     <td>'.$task['reward'].'</td>
+                                    <td><a href="/redirects/status.php?uid='.$task['uid'].'">'.$task['status'].'</a></td>
                                   </tr>
 
 
