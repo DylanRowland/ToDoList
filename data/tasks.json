@@ -7,7 +7,7 @@
         "dateDeadline": "2023\/02\/06",
         "dateComplete": null,
         "decription": "1234",
-        "status": "created",
+        "status": "completed",
         "reward": "1234",
         "timeNeeded": "30",
         "category": "English"
@@ -72,7 +72,7 @@
         "dateDeadline": "2023\/02\/15",
         "dateComplete": null,
         "decription": "please work now",
-        "status": "created",
+        "status": "completed",
         "reward": "100",
         "timeNeeded": "10",
         "category": "Personal"
@@ -98,7 +98,7 @@
         "dateDeadline": "3090\/12\/12",
         "dateComplete": null,
         "decription": "123",
-        "status": "created",
+        "status": "canceled",
         "reward": "9",
         "timeNeeded": "15",
         "category": "Science"
@@ -167,5 +167,18 @@
         "reward": "92",
         "timeNeeded": "300",
         "category": "Personal"
+    },
+    {
+        "uid": 2031,
+        "userUID": "102",
+        "title": "123",
+        "dateCreate": "2023\/03\/08",
+        "dateDeadline": "2222\/12\/31",
+        "dateComplete": null,
+        "decription": "123",
+        "status": "created",
+        "reward": "123",
+        "timeNeeded": "15",
+        "category": "Chores"
     }
 ]
