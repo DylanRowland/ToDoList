@@ -269,7 +269,7 @@
         </section>
         <!-- Footer-->
           <?php echo $footer; ?>
-        <!-- Bootstrap core JS-->
+        <!-- Bootstrap core JavaScript-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JavaScript -->
         <script src="/resources/templateFiles/js/scripts.js"></script>
